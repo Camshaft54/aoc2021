@@ -1,6 +1,7 @@
+from distutils.dir_util import copy_tree
 import os
+
 day = input("Enter Day: ")
-os.mkdir("day" + day)
-open("day" + day + "/input.txt", "w+")
-python_file = open("day" + day + "/day" + day + ".py", "w+")
-python_file.write("file = open('../day" + day + "/input.txt', 'r').read()\nthings = file.split(\"\\n\")\n")
+os.mkdir(f'day{day}')
+copy_tree('template', f'day{day}')
+os.rename(f'day{day}/template.py', f'day{day}/day{day}.py')
